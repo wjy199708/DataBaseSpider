@@ -6,6 +6,7 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
 
 
 class LagouSpiderMiddleware(object):
@@ -104,23 +105,32 @@ class LagouDownloaderMiddleware(object):
 
 
 import scrapy
+import random
+
 # from scrapy import signals
 # import random
 #
 #
-#
-# class ProxyMiddleware(object):
-#     '''
-#     设置Proxy
-#     '''
-#
-#     def __init__(self, ip):
-#         self.ip = ip
-#
-#     @classmethod
-#     def from_crawler(cls, crawler):
-#         return cls(ip=crawler.settings.get('PROXIES'))
+from . import settings
+
+
+# # 反爬之  设置随机的User-Agent
+# class MyUserAgentMiddleware(UserAgentMiddleware):
 #
 #     def process_request(self, request, spider):
-#         ip = random.choice(self.ip)
-#         request.meta['proxy'] = ip
+#         agent = random.choice(settings.MY_USER_AGENT)
+#         request.headers['User-Agent'] = agent
+#
+# #
+# class CheckUA:
+#     def process_response(self, request, response, spider):
+#         print(request.headers['User-Agent'])
+#         return response  # 不能少！
+#
+#
+# # 反爬之设置 代理IP
+# class ProxyIPMIddleware(object):
+#
+#     def process_request(self, request, spider):
+#         # ip = random.choice(self.ip)
+#         request.meta['proxy'] = random.choice(settings.PROXY)

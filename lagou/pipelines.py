@@ -61,30 +61,30 @@ class PosCategoryPipeline(object):
         return item
 
 
-class JavaPostionPipeline(object):
-    collection_name = 'javaPos'
-
-    def __init__(self, mongo_uri, mongo_db):
-        self.mongo_uri = mongo_uri
-        self.mongo_db = mongo_db
-
-    @classmethod
-    def from_crawler(cls, crawler):
-        return cls(
-            mongo_uri=crawler.settings.get('MONGO_URI'),
-            mongo_db=crawler.settings.get('MONGO_DATABASE', 'spider')
-        )
-
-    def open_spider(self, spider):
-        self.client = pymongo.MongoClient(self.mongo_uri)
-        self.db = self.client[self.mongo_db]
-
-    def close_spider(self, spider):
-        self.client.close()
-
-    def process_item(self, item, spider):
-        self.db[self.collection_name].insert_one(dict(item))
-        return item
+# class JavaPostionPipeline(object):
+#     collection_name = 'javaPos'
+#
+#     def __init__(self, mongo_uri, mongo_db):
+#         self.mongo_uri = mongo_uri
+#         self.mongo_db = mongo_db
+#
+#     @classmethod
+#     def from_crawler(cls, crawler):
+#         return cls(
+#             mongo_uri=crawler.settings.get('MONGO_URI'),
+#             mongo_db=crawler.settings.get('MONGO_DATABASE', 'spider')
+#         )
+#
+#     def open_spider(self, spider):
+#         self.client = pymongo.MongoClient(self.mongo_uri)
+#         self.db = self.client[self.mongo_db]
+#
+#     def close_spider(self, spider):
+#         self.client.close()
+#
+#     def process_item(self, item, spider):
+#         self.db[self.collection_name].insert_one(dict(item))
+#         return item
 
 
 class PHPPostionPipeline(object):
@@ -161,6 +161,7 @@ class UIshejishiPipeLine(object):
         self.client.close()
 
     def process_item(self, item, spider):
+        print(dict(item),"即将存入mongodb数据库的字典文件是")
         self.db[self.collection_name].insert_one(dict(item))
         return item
 
@@ -189,3 +190,18 @@ class GongsiLocationPipeLine(object):
     def process_item(self, item, spider):
         self.db[self.collection_name].insert_one(dict(item))
         return item
+
+
+class JavaPostionPipeline(object):
+
+    def process_item(self, item, spider):
+        # self.db[self.collection_name].insert_one(dict(item))
+        print(item)
+        return item
+
+
+
+
+
+
+

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from lagou.items import PosCategoryItem
 from scrapy.loader import ItemLoader
 from scrapy.selector import Selector
 from lxml import etree
@@ -17,7 +16,7 @@ class PositioncategorySpider(scrapy.Spider):
 
     def parse(self, response):
         # loader = ItemLoader(item=PosCategoryItem(), response=response)
-        item = PosCategoryItem()
+        # item = PosCategoryItem()
 
         # print()
         # print(len(boxs))

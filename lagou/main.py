@@ -1,7 +1,7 @@
 import scrapy.cmdline as cmd
 
 # cmd.execute("scrapy crawl positionCategory".split())
-cmd.execute('scrapy crawl positionCategory'.split())
+cmd.execute('scrapy crawl job'.split())
 #
 # import os
 #

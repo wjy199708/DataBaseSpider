@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
-from lagou.items import GongsiLocationItem
 
 
 class GongsilocationSpider(scrapy.Spider):
@@ -10,7 +9,7 @@ class GongsilocationSpider(scrapy.Spider):
     start_urls = ['http://lagou.com/gongsi']
 
     def parse(self, response):
-        item = GongsiLocationItem()
+        # item = GongsiLocationItem()
         gongsiNames = []
         # gongsiName = response.xpath(
         #     "//div[@class='has-more workcity']//div[@class='city-wrapper clearfix']/a[@data-lg-tj-id='7z00']/text()").getall()
