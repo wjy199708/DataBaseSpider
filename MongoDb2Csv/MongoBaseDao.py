@@ -1,12 +1,3 @@
-# @Time : 2019/5/9 18:17
-
-# @Author : 陈念宽
-
-# @File : MongoBaseDao.py 
-
-# @Software: PyCharm
-
-# coding:utf-8
 """
 mongo操作工具
 """

@@ -1,12 +1,3 @@
-# @Time : 2019/5/9 16:26
-
-# @Author : 陈念宽
-
-# @File : DataProcessing.py 
-
-# @Software: PyCharm
-
-# coding:utf-8
 import pandas as pd
 import csv
 

@@ -1,11 +1,3 @@
-# @Time : 2019/6/20 21:46 
-
-# @Author : 杜泽厚
-
-# @File : MongodbToCsv.py 
-
-# @Software: PyCharm
-
 # coding:utf-8
 
 from MongoDb2Csv.MongoBaseDao import MongoBaseDao

@@ -48,14 +48,14 @@ def gongsi_info(url):  # 定义获取公司信息的函数
 
                 # 获取数据
                 # print(json_data['totalCount'])
-                try:
-                    results = json_data['result']
-                except requests.exceptions.HTTPError:
-                    continue
-
-                print("results:::", results, '\n', "resluts_len:::", len(results))
-
-                # 设置新的数据格式
+                #                 try:
+                results = json_data['result']
+                #                 except requests.exceptions.HTTPError:
+                #                     continue
+                #
+                #                 print("results:::", results, '\n', "resluts_len:::", len(results))
+                #
+                #                 # 设置新的数据格式
                 for result in results:
                     infos = {
                         'approve': result['approve'],
