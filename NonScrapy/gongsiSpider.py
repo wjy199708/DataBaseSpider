@@ -1,5 +1,7 @@
 import requests
 import json, time
+from DataProcess.Mongodb import StorageData
+from NonScrapy.hotPositionSpider import getNowFormatTime
 
 
 def gongsi_info(url):  # 定义获取公司信息的函数
@@ -7,7 +9,7 @@ def gongsi_info(url):  # 定义获取公司信息的函数
     storage_file = open('./gongsi.txt', 'w', encoding='utf-8')
 
     headers = {
-        'Accept': 'application/json, text/javascript, */*; q=0.01',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'Referer': 'https://www.lagou.com/gongsi/',
         'User-Agent': randomlyGetUserAgent()
     }
@@ -20,7 +22,8 @@ def gongsi_info(url):  # 定义获取公司信息的函数
             'first': 'false',
             'pn': str(pn),
             'sortField': '0',
-            'havemark': '0'
+            'havemark': '0',
+            'showId': 'e135bd5a1eee4e2b94e83de5c5852146'
         }  # post请求参数
 
         try:
@@ -82,6 +85,7 @@ def gongsi_info(url):  # 定义获取公司信息的函数
                     }
                     print("infos::::", infos)
                     storage_file.write(str(infos) + '\n')
+                    StorageData('gongsi', dict({'info': infos, 'dataType': 'json', 'time': getNowFormatTime()}))
                 ti = 10 + random.random()  # 设置间隔时间，防止被服务器屏蔽
                 print("本次防止访问过快让网站屏蔽的延时请求为(0)秒(/s)".format(ti))
                 time.sleep(ti)
